@@ -61,7 +61,8 @@ class BookListViewController: UIViewController {
                 let indexPath = tableView.indexPathForSelectedRow,
                 let destination = segue.destination as? BookDetailViewController
             else { return }
-            destination.book = bookController.books[indexPath.row]
+            destination.bookController = bookController
+            destination.bookIndex = indexPath.row
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
