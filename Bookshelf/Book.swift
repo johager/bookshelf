@@ -15,9 +15,23 @@ class Book {
     let releaseDate: Date
     let description: String
     
+    // MARK: - Calculated properties
+    
     var author: String {
         return "\(authorFirstName) \(authorLastName)"
     }
+    
+    var titleForSort: String {
+        if title.hasPrefix("A ") {
+            return title.replacingOccurrences(of: "A ", with: "")
+        }
+        if title.hasPrefix("The ") {
+            return title.replacingOccurrences(of: "The ", with: "")
+        }
+        return title
+    }
+    
+    // MARK: - Init
     
     init(title: String, authorFirstName: String, authorLastName: String, coverImageName: String, releaseDateString: String, description: String) {
         self.title = title
@@ -27,6 +41,8 @@ class Book {
         self.releaseDate = Book.date(from: releaseDateString)
         self.description = description
     }
+    
+    // MARK: - Methods
     
     static func date(from dateString: String) -> Date {
         let dateFormatter = DateFormatter()

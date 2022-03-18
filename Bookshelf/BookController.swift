@@ -33,7 +33,7 @@ class BookController {
         case .releaseDate:
             books.sort(by: {$0.releaseDate < $1.releaseDate})
         case .title:
-            books.sort(by: {$0.title < $1.title})
+            books.sort(by: {$0.titleForSort < $1.titleForSort})
         }
     }
 }
