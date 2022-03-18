@@ -9,14 +9,20 @@ import Foundation
 
 class Book {
     let title: String
-    let author: String
+    let authorFirstName: String
+    let authorLastName: String
     let coverImageName: String
     let releaseDate: Date
     let description: String
     
-    init(title: String, author: String, coverImageName: String, releaseDateString: String, description: String) {
+    var author: String {
+        return "\(authorFirstName) \(authorLastName)"
+    }
+    
+    init(title: String, authorFirstName: String, authorLastName: String, coverImageName: String, releaseDateString: String, description: String) {
         self.title = title
-        self.author = author
+        self.authorFirstName = authorFirstName
+        self.authorLastName = authorLastName
         self.coverImageName = coverImageName
         self.releaseDate = Book.date(from: releaseDateString)
         self.description = description

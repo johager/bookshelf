@@ -53,10 +53,11 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WTz-dE-qaT">
-                                <rect key="frame" x="141.5" y="88" width="131" height="32"/>
+                                <rect key="frame" x="108.5" y="88" width="197" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
+                                    <segment title=""/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -73,7 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Spe-QG-35c"/>
                     <connections>
-                        <outlet property="segmentedControl" destination="WTz-dE-qaT" id="VGH-Iv-W0h"/>
+                        <outlet property="sortBySegmentedControl" destination="WTz-dE-qaT" id="TMW-fc-6ZG"/>
                         <outlet property="tableView" destination="us6-CL-VQL" id="D8S-gI-5qg"/>
                     </connections>
                 </viewController>

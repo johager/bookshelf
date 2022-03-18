@@ -11,18 +11,45 @@ class BookListViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var sortBySegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
     
     let bookController = BookController()
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Books"
+        
+        setUpSortBySegmentedControl()
+        
+        bookController.sort(by: .title)
+    }
+    
+    func setUpSortBySegmentedControl() {
+        sortBySegmentedControl.setTitle("Title", forSegmentAt: 0)
+        sortBySegmentedControl.setTitle("Author", forSegmentAt: 1)
+        sortBySegmentedControl.setTitle("Date", forSegmentAt: 2)
+        
+        sortBySegmentedControl.addTarget(self, action: #selector(handleSegmentedControlChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func handleSegmentedControlChanged(_ segmentedControl: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            bookController.sort(by: .title)
+        case 1:
+            bookController.sort(by: .author)
+        case 2:
+            bookController.sort(by: .releaseDate)
+        default:
+            break
+        }
+        tableView.reloadData()
     }
 
     // MARK: - Navigation
@@ -35,6 +62,7 @@ class BookListViewController: UIViewController {
                 let destination = segue.destination as? BookDetailViewController
             else { return }
             destination.book = bookController.books[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }
