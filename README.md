@@ -10,3 +10,7 @@ Additions to the baseline project:
 - Swipe between books in the detail view.
 
 When sorting books by title, a leading "A " or "The " is ignored.
+
+### Technoloy
+
+Swift, UIKit
